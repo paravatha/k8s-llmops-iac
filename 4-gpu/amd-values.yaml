@@ -1,0 +1,36 @@
+nfd:
+  enabled: true
+
+labeller:
+  enabled: true
+
+namespace: "kube-system"
+
+dp:
+  image:
+    repository: docker.io/rocm/k8s-device-plugin
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "1.25.2.7"
+  resources: {}
+
+lbl:
+  image:
+    repository: docker.io/rocm/k8s-device-plugin
+    tag: "labeller-1.25.2.7"
+  resources: {}
+
+imagePullSecrets: []
+
+securityContext:
+  allowPrivilegeEscalation: true
+  capabilities:
+    drop:
+    - ALL
+
+tolerations:
+  - key: CriticalAddonsOnly
+    operator: Exists
+
+node_selector:
+  feature.node.kubernetes.io/pci-0300_1002.present: "true"
+  kubernetes.io/arch: amd64
