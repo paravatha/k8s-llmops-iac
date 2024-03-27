@@ -1,6 +1,6 @@
-# k8s-llmops-stack
+# k8s-llmops-iac
 
-To setup
+IaC to setup
 
 1. VPC
 2. EKS
